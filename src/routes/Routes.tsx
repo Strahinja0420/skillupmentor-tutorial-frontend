@@ -19,14 +19,96 @@ const Home = lazy(() => import('pages/Home'))
 
 /* Private routes */
 
+const Dashboard = lazy(() => import('pages/dashboard'))
+const DashboardUsers = lazy(() => import('pages/dashboard/Users'))
+const DashboardUsersAdd = lazy(() => import('pages/dashboard/Users/Add'))
+const DashboardUsersEdit = lazy(() => import('pages/dashboard/Users/Edit'))
+const DashboardRoles = lazy(() => import('pages/dashboard/Roles'))
+const DashboardRolesAdd = lazy(() => import('pages/dashboard/Roles/Add'))
+const DashboardRolesEdit = lazy(() => import('pages/dashboard/Roles/Edit'))
+const DashboardProducts = lazy(() => import('pages/dashboard/Products'))
+const DashboardProductsAdd = lazy(() => import('pages/dashboard/Products/Add'))
+const DashboardProductsEdit = lazy(
+  () => import('pages/dashboard/Products/Edit'),
+)
+const DashboardOrders = lazy(() => import('pages/dashboard/Orders'))
+
 /* Restricted routes */
+
+const Login = lazy(() => import('pages/Login'))
+const Register = lazy(() => import('pages/Register'))
 
 /* Error routes */
 const Page404 = lazy(() => import('pages/Page404'))
 
 export const AppRoutes: AppRoute[] = [
   // Restricted Routes
+  {
+    type: RouteType.RESTRICTED,
+    path: '/login',
+    children: <Login />,
+  },
+  {
+    type: RouteType.RESTRICTED,
+    path: '/signup',
+    children: <Register />,
+  },
   // Private Routes
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard',
+    children: <Dashboard />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/users',
+    children: <DashboardUsers />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/users/add',
+    children: <DashboardUsersAdd />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/users/edit',
+    children: <DashboardUsersEdit />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/roles',
+    children: <DashboardRoles />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/roles/add',
+    children: <DashboardRolesAdd />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/roles/edit',
+    children: <DashboardRolesEdit />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/products',
+    children: <DashboardProducts />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/products/add',
+    children: <DashboardProductsAdd />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/products/edit',
+    children: <DashboardProductsEdit />,
+  },
+  {
+    type: RouteType.PRIVATE,
+    path: '/dashboard/orders',
+    children: <DashboardOrders />,
+  },
   // Public Routes
   {
     type: RouteType.PUBLIC,
